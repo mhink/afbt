@@ -1,0 +1,107 @@
+@import "react-select-box";
+
+body {
+  padding-top: 1em;
+}
+
+#tutorial {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .tutorial-controls {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+  }
+
+  .tutorial-content {
+  }
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-container {
+  position: relative;
+  display: flex;
+  width: 640px;
+  height: 480px;
+  border: 2px solid black;
+
+  &.wm-htb      { writing-mode:         horizontal-tb;
+                  -webkit-writing-mode: horizontal-tb;    
+    .flex-item  { border-bottom: 1px solid red; }
+  }
+  &.wm-vrl      { writing-mode:         vertical-rl;
+                  -webkit-writing-mode: vertical-rl;      
+    .flex-item  { border-left: 1px solid red; }
+  }
+  &.wm-vlr      { writing-mode:         vertical-lr;
+                  -webkit-writing-mode: vertical-lr;      
+    .flex-item  { border-left: 1px solid red; }
+  }
+
+  &.fd-row   { flex-direction: row;            }
+  &.fd-col   { flex-direction: column;         }
+  &.fd-row-r { flex-direction: row-reverse;    }
+  &.fd-col-r { flex-direction: column-reverse; }
+
+  &.jc-fs { justify-content: flex-start; }
+  &.jc-fe { justify-content: flex-end;   }
+  &.jc-c  { justify-content: center;     }
+  &.jc-sb { justify-content: space-between; }
+  &.jc-sa { justify-content: space-around; }
+
+  &.ai-fs { align-items: flex-start;  }
+  &.ai-fe { align-items: flex-end;    }
+  &.ai-c  { align-items: center;      }
+  &.ai-s  { align-items: stretch;     }
+  &.ai-b  { align-items: baseline;    }
+}
+
+.flex-item {
+  p { margin: 0; }
+  margin: 0.5em;
+  border: 2px dashed $light-gray;
+  display: flex;
+  min-height: 5em;
+  min-width: 5em;
+  justify-content: center;
+  align-items: center;
+
+  &.raised {
+    align-items: flex-start;
+  }
+
+  &.dropped {
+    align-items: flex-end;
+  }
+}
+
+.tutorial-controls {
+  width:    20em;
+  padding:  0.5em;
+}
+
+.react-select-box-container {
+  margin-bottom: 1em;
+}
+
+.compass {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+  width: 4em;
+  height: 4em;
+  border: 1px solid $light-gray;
+  
+  .main-axis {
+  }
+
+  .cross-axis {
+  }
+}

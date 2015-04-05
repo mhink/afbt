@@ -1,0 +1,24 @@
+@import "bourbon";
+@import "neat";
+@import "base/base";
+@import "icomoon";
+@import "flexbox";
+
+body {
+  margin: 0; 
+  background: $base-background-color;
+  color: $base-font-color;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#react {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+}
