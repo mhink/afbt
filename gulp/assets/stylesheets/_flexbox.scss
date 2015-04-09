@@ -59,7 +59,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  align-content: flex-start;
 
   &.wm-htb      { writing-mode:         horizontal-tb;
                   -webkit-writing-mode: horizontal-tb;    
