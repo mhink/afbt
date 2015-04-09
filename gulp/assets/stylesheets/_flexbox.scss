@@ -89,6 +89,13 @@ body {
   &.ai-c  { align-items: center;      }
   &.ai-s  { align-items: stretch;     }
   &.ai-b  { align-items: baseline;    }
+
+  &.ac-fs { align-content: flex-start;  }
+  &.ac-fe { align-content: flex-end;    }
+  &.ac-c  { align-content: center;      }
+  &.jc-sb { align-content: space-between; }
+  &.jc-sa { align-content: space-around; }
+  &.ac-s  { align-content: stretch;     }
 }
 
 .flex-item {

@@ -62,6 +62,7 @@ var FlexboxTutorial = exports.FlexboxTutorial = React.createClass({
     classes[this.state.flexDirection] = true;
     classes[this.state.justifyContent] = true;
     classes[this.state.alignItems] = true;
+    classes[this.state.alignContent] = true;
     return cx(classes);
   },
 });
@@ -82,7 +83,20 @@ var TutorialControls = exports.TutorialControls = React.createClass({displayName
       React.createElement("div", {className: "knobs"}, 
         React.createElement("h1", null, "Controls"), 
         React.createElement("hr", null), 
-        React.createElement("p", null, "Flex Direction"), 
+
+        React.createElement("h3", null, "writing-mode"), 
+        React.createElement("p", null, "Determines text's ", React.createElement("em", null, "inline"), " and ", React.createElement("em", null, "block"), " directions."), 
+        React.createElement(SelectBox, {
+          label: "Writing Mode", 
+          onChange: this.handleWritingModeChange, 
+          value: this.state.writingMode}, 
+          React.createElement("option", {value: "wm-htb"}, "horizontal-tb"), 
+          React.createElement("option", {value: "wm-vrl"}, "vertical-rl"), 
+          React.createElement("option", {value: "wm-vlr"}, "vertical-lr")
+        ), 
+
+        React.createElement("h3", null, "flex-direction"), 
+        React.createElement("p", null, "Determines ", React.createElement("em", null, "main"), " and ", React.createElement("em", null, "cross"), " axes based on the writing-mode."), 
         React.createElement(SelectBox, {
           label: "Flex Direction", 
           onChange: this.handleFlexDirectionChange, 
@@ -93,17 +107,9 @@ var TutorialControls = exports.TutorialControls = React.createClass({displayName
           React.createElement("option", {value: "fd-col-r"}, "column-reverse")
         ), 
 
-        React.createElement("p", null, "Writing Mode"), 
-        React.createElement(SelectBox, {
-          label: "Writing Mode", 
-          onChange: this.handleWritingModeChange, 
-          value: this.state.writingMode}, 
-          React.createElement("option", {value: "wm-htb"}, "horizontal-tb"), 
-          React.createElement("option", {value: "wm-vrl"}, "vertical-rl"), 
-          React.createElement("option", {value: "wm-vlr"}, "vertical-lr")
-        ), 
 
-        React.createElement("p", null, "Justify Content"), 
+        React.createElement("h3", null, "justify-content"), 
+        React.createElement("p", null, "Flex Item alignment within Flex Line along Main Axis"), 
         React.createElement(SelectBox, {
           label: "Justify Content", 
           onChange: this.handleJustifyContentChange, 
@@ -115,7 +121,8 @@ var TutorialControls = exports.TutorialControls = React.createClass({displayName
           React.createElement("option", {value: "jc-sa"}, "space-around")
         ), 
 
-        React.createElement("p", null, "Align Items"), 
+        React.createElement("h3", null, "align-items"), 
+        React.createElement("p", null, "Flex Item alignment within Flex Line along Cross Axis"), 
         React.createElement(SelectBox, {
           label: "Align Items", 
           onChange: this.handleAlignItemsChange, 
@@ -125,8 +132,21 @@ var TutorialControls = exports.TutorialControls = React.createClass({displayName
           React.createElement("option", {value: "ai-c"}, "center"), 
           React.createElement("option", {value: "ai-s"}, "stretch"), 
           React.createElement("option", {value: "ai-b"}, "baseline")
-        )
+        ), 
 
+        React.createElement("h3", null, "align-content"), 
+        React.createElement("p", null, "Flex Line alignment along Cross Axis"), 
+        React.createElement(SelectBox, {
+          label: "Align Content", 
+          onChange: this.handleAlignContentChange, 
+          value: this.state.alignContent}, 
+          React.createElement("option", {value: "ac-fs"}, "flex-start"), 
+          React.createElement("option", {value: "ac-fe"}, "flex-end"), 
+          React.createElement("option", {value: "ac-c"}, "center"), 
+          React.createElement("option", {value: "ac-sb"}, "space-between"), 
+          React.createElement("option", {value: "ac-sa"}, "space-around"), 
+          React.createElement("option", {value: "ac-s"}, "stretch")
+        )
       )
     );
   },
@@ -142,8 +162,10 @@ var TutorialControls = exports.TutorialControls = React.createClass({displayName
   },
   handleAlignItemsChange: function(x) {
     TutorialStore.setAlignItems(x);
+  },
+  handleAlignContentChange: function(x) {
+    TutorialStore.setAlignContent(x);
   }
-
 });
 
 var Compass = React.createClass({displayName: "Compass",
@@ -168,6 +190,7 @@ var FlexboxTutorialStore = module.exports = Reflux.createStore({
     this.writingMode    = this.getState().writingMode;
     this.justifyContent = this.getState().justifyContent;
     this.alignItems     = this.getState().alignItems;
+    this.alignContent     = this.getState().alignContent;
   },
 
   setFlexDirection: function(newDirection) {
@@ -190,12 +213,19 @@ var FlexboxTutorialStore = module.exports = Reflux.createStore({
     this.trigger(this.getState());
   },
 
+  setAlignContent: function(newAc) {
+    this.alignContent = newAc;
+    this.trigger(this.getState());
+  },
+
+
   getState: function() {
     return {
       writingMode:    (this.writingMode     || 'wm-htb'),
       flexDirection:  (this.flexDirection   || 'fd-row'),
       justifyContent: (this.justifyContent  || 'jc-fs'),
       alignItems:     (this.alignItems      || 'ai-fs'),
+      alignContent:   (this.alignContent    || 'ac-fs'),
     };
   },
 });

@@ -43,6 +43,7 @@ var FlexboxTutorial = exports.FlexboxTutorial = React.createClass({
     classes[this.state.flexDirection] = true;
     classes[this.state.justifyContent] = true;
     classes[this.state.alignItems] = true;
+    classes[this.state.alignContent] = true;
     return cx(classes);
   },
 });
@@ -63,7 +64,20 @@ var TutorialControls = exports.TutorialControls = React.createClass({
       <div className="knobs">
         <h1>Controls</h1>
         <hr />
-        <p>Flex Direction</p>
+
+        <h3>writing-mode</h3>
+        <p>Determines text's <em>inline</em> and <em>block</em> directions.</p>
+        <SelectBox 
+          label="Writing Mode"
+          onChange={this.handleWritingModeChange}
+          value={this.state.writingMode}>
+          <option value="wm-htb">horizontal-tb</option>
+          <option value="wm-vrl">vertical-rl</option>
+          <option value="wm-vlr">vertical-lr</option>
+        </SelectBox>
+
+        <h3>flex-direction</h3>
+        <p>Determines <em>main</em> and <em>cross</em> axes based on the writing-mode.</p>
         <SelectBox 
           label="Flex Direction"
           onChange={this.handleFlexDirectionChange}
@@ -74,17 +88,9 @@ var TutorialControls = exports.TutorialControls = React.createClass({
           <option value="fd-col-r">column-reverse</option>
         </SelectBox>
 
-        <p>Writing Mode</p>
-        <SelectBox 
-          label="Writing Mode"
-          onChange={this.handleWritingModeChange}
-          value={this.state.writingMode}>
-          <option value="wm-htb">horizontal-tb</option>
-          <option value="wm-vrl">vertical-rl</option>
-          <option value="wm-vlr">vertical-lr</option>
-        </SelectBox>
 
-        <p>Justify Content</p>
+        <h3>justify-content</h3>
+        <p>Flex Item alignment within Flex Line along Main Axis</p>
         <SelectBox 
           label="Justify Content"
           onChange={this.handleJustifyContentChange}
@@ -96,7 +102,8 @@ var TutorialControls = exports.TutorialControls = React.createClass({
           <option value="jc-sa">space-around</option>
         </SelectBox>
 
-        <p>Align Items</p>
+        <h3>align-items</h3>
+        <p>Flex Item alignment within Flex Line along Cross Axis</p>
         <SelectBox 
           label="Align Items"
           onChange={this.handleAlignItemsChange}
@@ -108,6 +115,19 @@ var TutorialControls = exports.TutorialControls = React.createClass({
           <option value="ai-b">baseline</option>
         </SelectBox>
 
+        <h3>align-content</h3>
+        <p>Flex Line alignment along Cross Axis</p>
+        <SelectBox 
+          label="Align Content"
+          onChange={this.handleAlignContentChange}
+          value={this.state.alignContent}>
+          <option value="ac-fs">flex-start</option>
+          <option value="ac-fe">flex-end</option>
+          <option value="ac-c">center</option>
+          <option value="ac-sb">space-between</option>
+          <option value="ac-sa">space-around</option>
+          <option value="ac-s">stretch</option>
+        </SelectBox>
       </div>
     );
   },
@@ -123,8 +143,10 @@ var TutorialControls = exports.TutorialControls = React.createClass({
   },
   handleAlignItemsChange: function(x) {
     TutorialStore.setAlignItems(x);
+  },
+  handleAlignContentChange: function(x) {
+    TutorialStore.setAlignContent(x);
   }
-
 });
 
 var Compass = React.createClass({
