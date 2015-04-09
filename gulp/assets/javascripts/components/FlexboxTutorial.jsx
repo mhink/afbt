@@ -21,13 +21,17 @@ var FlexboxTutorial = exports.FlexboxTutorial = React.createClass({
 
   render: function() {
     return (
-      <div className="section-1">
-        <h1>An Interactive Flexbox</h1>
-        <div className={this._getClasses()}>
-          <div className="flex-item raised"><p>One</p></div>
-          <div className="flex-item"><p>Two</p></div>
-          <div className="flex-item dropped"><p>Three</p></div>
-        </div>
+      <div className={this._getClasses()}>
+        <div className="flex-item raised"><p>One</p></div>
+        <div className="flex-item"><p>Two</p></div>
+        <div className="flex-item dropped"><p>Three</p></div>
+        <div className="flex-item"><p>Four</p></div>
+        <div className="flex-item"><p>Five</p></div>
+        <div className="flex-item"><p>Six</p></div>
+        <div className="flex-item"><p>Seven</p></div>
+        <div className="flex-item"><p>Eight</p></div>
+        <div className="flex-item"><p>Nine</p></div>
+        <div className="flex-item"><p>Ten</p></div>
       </div>
     );
   },

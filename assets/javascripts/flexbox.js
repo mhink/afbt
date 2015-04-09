@@ -10,8 +10,8 @@ TutorialControls = require("./components/FlexboxTutorial").TutorialControls;
 $ = require("jquery");
 
 $(document).ready(function() {
-  React.render(React.createElement(FlexboxTutorial), $("#tutorial > .tutorial-content")[0]);
-  return React.render(React.createElement(TutorialControls), $(".tutorial-controls")[0]);
+  React.render(React.createElement(FlexboxTutorial), $("#section-1")[0]);
+  return React.render(React.createElement(TutorialControls), $("#tutorial-controls")[0]);
 });
 
 
@@ -40,13 +40,17 @@ var FlexboxTutorial = exports.FlexboxTutorial = React.createClass({
 
   render: function() {
     return (
-      React.createElement("div", {className: "section-1"}, 
-        React.createElement("h1", null, "An Interactive Flexbox"), 
-        React.createElement("div", {className: this._getClasses()}, 
-          React.createElement("div", {className: "flex-item raised"}, React.createElement("p", null, "One")), 
-          React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Two")), 
-          React.createElement("div", {className: "flex-item dropped"}, React.createElement("p", null, "Three"))
-        )
+      React.createElement("div", {className: this._getClasses()}, 
+        React.createElement("div", {className: "flex-item raised"}, React.createElement("p", null, "One")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Two")), 
+        React.createElement("div", {className: "flex-item dropped"}, React.createElement("p", null, "Three")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Four")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Five")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Six")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Seven")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Eight")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Nine")), 
+        React.createElement("div", {className: "flex-item"}, React.createElement("p", null, "Ten"))
       )
     );
   },

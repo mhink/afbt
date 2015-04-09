@@ -6,8 +6,7 @@ var neatPaths    = require("node-neat").includePaths;
 module.exports = {
   publicAssets: publicAssets,
   browserSync: {
-    proxy: 'localhost:3002',
-    files: ['./app/views/**']
+    files: ['./gulp/**']
   },
   sass: {
     src: sourceFiles + "/stylesheets/**/*.{sass,scss}",
